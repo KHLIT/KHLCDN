@@ -1,8 +1,8 @@
 # GenerateCSV.ps1
 
 $RepoBase = "https://media.githubusercontent.com/media/KHLIT/KHLCDN/refs/heads/main/Video"
-$SourcePath = "C:\TV Media"
-$OutputFile = "C:\TV Media\Karndean_Exhibit_Playlist.csv"
+$SourcePath = "C:\Github\KHLCDN\Video"
+$OutputFile = "C:\Github\KHLCDN\Karndean_Exhibit_Playlist.csv"
 
 # Create Shell object once
 $shell = New-Object -ComObject Shell.Application
@@ -25,7 +25,7 @@ Get-ChildItem -Path $SourcePath -Filter "*.mp4" -File |
         $videoLength = $folder.GetDetailsOf($file, 27)
 
         # URL encode filename
-        $urlName = [System.Uri\]::EscapeDataString($_.Name)
+        $urlName = [System.Uri]::EscapeDataString($_.Name)
 
         $Lines += (
             "Exhibit{0:D2},{1}/{2},{3},01:00:00,01/01/2018 00:00,12/31/2030 23:59,yes" -f `
